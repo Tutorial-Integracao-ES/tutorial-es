@@ -47,6 +47,8 @@ GEM
     activerecord (6.1.1)
       activemodel (= 6.1.1)
       activesupport (= 6.1.1)
+    activerecord-postgresql-adapter (0.0.1)
+      pg
     activestorage (6.1.1)
       actionpack (= 6.1.1)
       activejob (= 6.1.1)
@@ -150,6 +152,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.11.1-x86_64-linux)
       racc (~> 1.4)
+    pg (1.2.3)
+    pg (1.2.3-x64-mingw32)
     protobuf-cucumber (3.10.8)
       activesupport (>= 3.2)
       middleware
@@ -270,6 +274,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord-postgresql-adapter
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
@@ -278,6 +283,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   jbuilder (~> 2.7)
+  pg
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.0)
