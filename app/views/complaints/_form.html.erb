@@ -1,0 +1,37 @@
+<%= form_with(model: complaint) do |form| %>
+  <% if complaint.errors.any? %>
+    <div id="error_explanation">
+      <h2>Não foi possível cadastradar a reclamação:</h2>
+
+      <ul>
+        <% complaint.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :título %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :conteúdo %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :categoria %>
+    <%= form.text_field :category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :empresa %>
+    <%= form.select :company, allowed_companies() %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

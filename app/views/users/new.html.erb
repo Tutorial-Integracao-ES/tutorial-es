@@ -1,0 +1,26 @@
+<h1>Cadastrar usuário</h1> 
+
+<%= form_for @user do |f|%>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>Não foi possível cadastrar usuário:</h2>
+
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :usuário%><br>
+  <%= f.text_field :username%><br>
+  <%= f.label :email%><br>
+  <%= f.text_field :email%><br>
+  <%= f.label :senha%><br>
+  <%= f.password_field :password%><br>
+  <%= f.submit "Cadastrar", :id=>"submit" %>
+<%end%>
+
+<%= link_to 'Voltar', complaints_path %>
+

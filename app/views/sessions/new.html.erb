@@ -1,0 +1,12 @@
+<h1>Login</h1>
+<p id="alert" style="color: red;"><%= alert %></p>
+
+<%= form_tag '/login' do %>
+  <%= label_tag :usuario%>
+  <%= text_field_tag :username %>
+  <%= label_tag :senha%>
+  <%= password_field_tag :password%>
+  <%= submit_tag "Entrar", :id=> "submit" %>
+<%end%>
+
+<%= link_to 'Voltar', complaints_path %>

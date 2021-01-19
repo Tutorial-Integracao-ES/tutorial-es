@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reclamações</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Conteúdo</th>
+      <th>Categoria</th>
+      <th>Empresa</th>
+      <th>Usuário</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @complaints.each do |complaint| %>
+      <tr>
+        <td><%= complaint.title %></td>
+        <td><%= complaint.content %></td>
+        <td><%= complaint.category %></td>
+        <td><%= complaint.company %></td>
+        <td><%= User.find_by(id: complaint.user_id).username %></td>
+        <td><%= link_to 'Mostrar', complaint %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova reclamação', new_complaint_path %>

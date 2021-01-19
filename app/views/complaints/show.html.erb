@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Título:</strong>
+  <%= @complaint.title %>
+</p>
+
+<p>
+  <strong>Conteúdo:</strong>
+  <%= @complaint.content %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @complaint.category %>
+</p>
+
+<p>
+  <strong>Empresa:</strong>
+  <%= @complaint.company %>
+</p>
+
+<p>
+  <strong>Usuário:</strong>
+  <%= User.find_by(id: @complaint.user_id).username %>
+</p>
+
+<%= link_to_if authorized_user?(), 'Editar', edit_complaint_path(@complaint) %> 
+<%= link_to_if authorized_user?(), 'Remover', @complaint, method: :delete, data: { confirm: 'Tem certeza?' }, :id=> "delete" %>
+<%= link_to 'Voltar', complaints_path %>

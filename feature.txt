@@ -1,0 +1,47 @@
+Feature Reclamacao
+As a usuario do sistema 
+I want to adicionar, mostrar, atualizar e remover reclamacoes
+so that Eu possa realizar reclamacoes no sistema de forma simples
+
+
+Scenario: nova reclamacao
+  Given Eu estou na pagina de listagem de reclamacoes 
+  And: Eu estou logado na conta com usuario 'Gust4-Sales' e senha '123456'
+  When: Eu clico em nova reclamacao 
+  And: Eu preencho o campo de titulo, o campo de conteudo, o campo de categoria e o campo de selecao de empresa, 
+    respectivamente, com 'Reclamacao de Compra Teste', 'Teste de reclamacao. Conteudo ... Teste ...', 'Eletrodomesticos' 
+    e 'Empresa2'
+  And: Eu clico em criar reclamacao  
+  Then: Eu vejo que a reclamacao com titulo 'Reclamacao de Compra Teste' foi criada   
+
+
+Scenario: remover reclamacao
+  Given: A reclamacao com titulo 'Reclamacao de Compra Teste' existe
+  And: Eu estou na pagina de detalhes da reclamacao com titulo 'Reclamacao de Compra Teste'
+  And: Eu estou logado na conta de usuario 'Gust4-Sales' e senha '123456'
+  When: Eu clico em remover reclamacao
+  And: Eu confirmo a caixa de confirmacao clicando na opcao Sim
+  Then: Eu sou redirecionado para a tela de listagem de reclamacoes
+  And: Eu vejo uma mensagem de que a reclamacao foi removida
+
+
+Scenario: preenchimento indevido da reclamacao
+  Given: Eu estou na pagina de listagem de reclamacoes 
+  And: Eu estou logado na conta de usuario 'Gust4-Sales' e senha '123456'
+  When: Eu clico em nova reclamacao 
+  And: Eu preencho o campo de titulo com '', preencho o campo de conteudo com apenas tres caracteres, '123', e o campo 
+    de categoria e o campo de selecao de empresa, respectivamente 'Eletrodomesticos' e 'Empresa2'
+  And: Eu clico em criar reclamacao  
+  Then: Eu vejo uma mensagem de erro que o campo de titulo e o campo de conteudo necessitam pelo menos 
+  cinco e dez caracteres, respectivamente
+
+
+  Scenario: criar reclamacao sem estar logado
+    Given: Eu estou na pagina de listagem de reclamacoes
+    When: Eu acesso a rota para criar reclamacao
+    Then: Eu vejo que nao tenho permissao para entrar naquela routa sendo redirecionado para a pagina de listagem 
+      novamente
+
+
+
+
